@@ -3,134 +3,208 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#111827">
-<title>Plan Financiero 2027</title>
+<meta name="theme-color" content="#071a3a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Finanzas 2027">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Finanzas 2027</title>
 <style>
-:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#64748b;--line:#e5e7eb;--accent:#2563eb;--green:#16a34a;--orange:#ea580c;--red:#dc2626}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-.wrap{max-width:720px;margin:auto;padding:16px 14px 40px}.hero{background:#111827;color:white;border-radius:22px;padding:20px;margin-bottom:14px}
-h1{font-size:25px;margin:0 0 5px}.sub{color:#cbd5e1;font-size:13px}.nav{display:flex;gap:7px;overflow:auto;padding:4px 0 12px;position:sticky;top:0;background:var(--bg);z-index:3}
-.nav button{border:1px solid var(--line);background:white;border-radius:12px;padding:9px 12px;white-space:nowrap;font-weight:700}.nav button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin:10px 0;box-shadow:0 2px 8px #00000008}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{background:#f8fafc;border-radius:14px;padding:12px}.metric small{color:var(--muted);display:block}.metric strong{font-size:20px}
-input{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:11px;font-size:17px;margin-top:7px}
-.status{padding:12px;border-radius:13px;margin-top:10px;font-weight:800}.ok{background:#ecfdf5;color:#166534}.surplus{background:#eff6ff;color:#1d4ed8}.short{background:#fef2f2;color:#b91c1c}
-.chartbox{display:flex;justify-content:center}.pie{width:min(330px,80vw);height:min(330px,80vw);border-radius:50%;position:relative;box-shadow:inset 0 0 0 1px #fff,0 5px 18px #00000012}
-.hole{position:absolute;inset:27%;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;font-size:13px;padding:15px}
-.legend{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:14px}.leg{font-size:12px;display:flex;gap:6px;align-items:center}.dot{width:11px;height:11px;border-radius:3px;flex:none}
-.row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}.row:last-child{border-bottom:0}.pct{color:var(--muted)}
-h2{font-size:18px;margin:4px 0 10px}h3{font-size:15px;margin:14px 0 6px}.note{font-size:13px;color:var(--muted);line-height:1.45}
-.progress{height:10px;background:#e5e7eb;border-radius:99px;overflow:hidden}.bar{height:100%;background:var(--accent)}
-.goal{margin:13px 0}.goaltop{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px}
-button.action{border:0;background:var(--accent);color:white;border-radius:11px;padding:10px 12px;font-weight:700;margin-top:8px}
-.smallbtn{border:1px solid var(--line);background:white;border-radius:10px;padding:8px 10px;margin-right:5px}
-footer{font-size:11px;color:var(--muted);text-align:center;padding:15px}
-@media(min-width:650px){.grid{grid-template-columns:repeat(4,1fr)}}
+:root{--nav:#071a3a;--blue:#2563eb;--blue2:#0b7cff;--ink:#17233d;--mut:#64748b;--bg:#f3f7fc;--line:#dfe7f1;--green:#16a34a;--red:#dc2626;--orange:#f59e0b;--card:#fff;--shadow:0 10px 30px #14345d12}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}.app{max-width:980px;margin:auto;padding-bottom:90px}
+header{background:linear-gradient(135deg,#06152f,#0b2a59);color:#fff;padding:20px 16px 15px;border-radius:0 0 26px 26px;box-shadow:0 8px 25px #05143233;position:sticky;top:0;z-index:8}
+.brand{display:flex;align-items:center;justify-content:space-between;gap:10px}.brandleft{display:flex;align-items:center;gap:12px}.logo{width:52px;height:52px;border:2px solid #f7c85c;border-radius:16px;background:#0a1c3d;display:grid;place-items:center;box-shadow:inset 0 0 0 1px #ffffff22}.logo svg{width:38px;height:38px}.brand h1{margin:0;font-size:25px;letter-spacing:-.4px}.sub{color:#c8d4e8;font-size:13px;margin-top:2px}.ico{border:1px solid #ffffff2b;background:#ffffff12;color:#fff;border-radius:12px;width:42px;height:42px;font-size:18px}.months{display:flex;gap:8px;overflow:auto;padding:13px 12px 2px}.month{border:1px solid var(--line);background:#fff;color:var(--blue);border-radius:13px;padding:10px 15px;font-weight:850;flex:0 0 auto}.month.active{background:var(--blue);color:#fff;box-shadow:0 5px 14px #2563eb33}
+.main{padding:12px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.card,.section{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}.card{padding:14px}.label{font-size:13px;color:var(--mut)}.value{font-size:21px;font-weight:900;margin-top:4px}.small{font-size:12px;color:var(--mut);margin-top:3px}.section{padding:17px;margin-top:13px}.head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:13px}.head h2{font-size:19px;margin:0}.pill,.secondary{border:1px solid var(--line);background:#f8fafc;color:var(--ink);border-radius:10px;padding:8px 11px;font-weight:800}.primary{border:0;background:var(--blue);color:#fff;border-radius:11px;padding:10px 14px;font-weight:800}.tools{display:flex;gap:8px;flex-wrap:wrap}.notice{background:#eef5ff;border:1px solid #d7e7ff;color:#1d4ed8;border-radius:13px;padding:12px;font-size:13px;font-weight:750}
+.fund{margin:18px 0}.fundtop{display:flex;justify-content:space-between;gap:8px}.fundname{font-weight:850}.fundnum{color:var(--mut);font-size:14px}.bar{height:12px;background:#e7edf5;border-radius:99px;overflow:hidden;margin-top:8px}.fill{height:100%;background:linear-gradient(90deg,#2563eb,#0b7cff);border-radius:99px;transition:width .8s cubic-bezier(.2,.8,.2,1)}.fundbottom{display:flex;justify-content:space-between;font-size:12px;color:var(--mut);margin-top:5px}
+.chart{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}.donut{width:min(300px,100%);aspect-ratio:1;margin:auto;position:relative}.donut svg{width:100%;height:100%;transform:rotate(-90deg)}.track{fill:none;stroke:#edf1f6;stroke-width:34}.seg{fill:none;stroke-width:34;cursor:pointer;transition:.2s}.seg.active,.seg:hover{stroke-width:39}.center{position:absolute;inset:0;display:grid;place-content:center;text-align:center}.center b{font-size:22px}.center span{font-size:12px;color:var(--mut)}.legend{display:grid;gap:5px}.leg{display:grid;grid-template-columns:10px 1fr auto auto;gap:7px;align-items:center;padding:9px;border-radius:10px;cursor:pointer}.leg.active{background:#eef5ff}.dot{width:10px;height:10px;border-radius:50%}.detail{margin-top:10px;background:#f4f8ff;border:1px solid #d9e8ff;border-radius:12px;padding:12px;font-weight:750}.detail span{color:var(--blue)}
+.check{display:grid;grid-template-columns:1fr 42px 42px 42px;gap:6px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}.check:last-child{border:0}.checkname{font-weight:700}.status{height:36px;border:1px solid var(--line);background:#f8fafc;border-radius:9px;font-size:18px;color:#94a3b8}.status.ok.active{background:#dcfce7;border-color:#86efac;color:#15803d}.status.no.active{background:#fee2e2;border-color:#fca5a5;color:#b91c1c}.status.wait.active{background:#e2e8f0;color:#475569}.chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px}.chip{padding:7px 10px;border-radius:10px;font-size:12px;font-weight:800}.green{background:#ecfdf3;color:#15803d;border:1px solid #bbf7d0}.red{background:#fff1f2;color:#b91c1c;border:1px solid #fecdd3}.gray{background:#f1f5f9;color:#475569;border:1px solid #e2e8f0}
+.rem{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);align-items:center}.rem:last-child{border:0}.date{font-size:12px;font-weight:850;color:var(--red)}.tag{font-size:12px;background:#fff7ed;color:#c2410c;padding:6px 8px;border-radius:8px;border:0}.tag.done{background:#ecfdf3;color:#15803d}.annual{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.annual .mini{background:#f8fafc;border-radius:13px;padding:11px}.mini b{font-size:17px}.progress{height:9px;background:#e7edf5;border-radius:99px;overflow:hidden;margin-top:7px}.progress i{display:block;height:100%;background:var(--blue);border-radius:99px}
+.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(980px,100%);background:#071a3a;display:grid;grid-template-columns:repeat(5,1fr);padding:8px 5px calc(8px + env(safe-area-inset-bottom));z-index:10}.nav{border:0;background:none;color:#aebbd0;font-size:11px;font-weight:750}.nav span{display:block;font-size:19px}.nav.active{color:#fff}
+.toast{position:fixed;left:50%;bottom:80px;transform:translate(-50%,20px);opacity:0;background:#13294b;color:#fff;padding:11px 15px;border-radius:11px;z-index:30;transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
+.modal{position:fixed;inset:0;background:#02081788;display:none;place-items:end center;z-index:20}.modal.show{display:grid}.sheet{width:min(720px,100%);background:#fff;border-radius:22px 22px 0 0;padding:20px;max-height:86vh;overflow:auto}.field{display:grid;gap:5px;margin:10px 0}.field input,.field select{border:1px solid var(--line);border-radius:10px;padding:10px;font-size:16px}.closex{float:right;border:0;background:#eef2f7;border-radius:50%;width:34px;height:34px}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}.chart{grid-template-columns:1fr}.annual{grid-template-columns:1fr}.main{padding:10px}.section{padding:14px}.brand h1{font-size:23px}}
 </style>
-<link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#111827"><script>if("serviceWorker" in navigator){addEventListener("load",()=>navigator.serviceWorker.register("sw.js"))}</script></head>
+</head>
 <body>
-<div class="wrap">
-<section class="hero">
-<h1>💰 Plan Financiero 2027</h1>
-<div class="sub">Control mensual · presupuesto · ingreso real · excedentes · metas</div>
-</section>
-
-<div class="nav" id="nav"></div>
-<div id="app"></div>
-
-<section class="card">
-<h2>🎯 Metas al cierre de 2027</h2>
-<div id="goals"></div>
-</section>
-<section class="card">
-<h2>🗓️ Recordatorios clave</h2>
-<div class="row"><b>ENERO</b><span>280 € → Napoleón · gastos anuales · Ski · Tenis</span></div>
-<div class="row"><b>MARZO</b><span>Flexipremia → automóvil; sobrante → emergencia</span></div>
-<div class="row"><b>MEDIADOS DE MAYO</b><span>Comprar tiquetes de Egipto</span></div>
-<div class="row"><b>JULIO</b><span>Doble sueldo · tiquetes Colombia · fondo Colombia</span></div>
-<div class="row"><b>AGOSTO</b><span>SOAT + tecnomecánica de Napoleón</span></div>
-<div class="row"><b>OCTUBRE</b><span>🇪🇬 Egipto · presupuesto total 3.150 €</span></div>
-<div class="row"><b>DICIEMBRE</b><span>🇨🇴 Colombia · presupuesto total 5.600 €</span></div>
-</section>
-<footer>Los datos se guardan automáticamente en este dispositivo. El ingreso real es editable mes a mes.</footer>
+<div class="app">
+<header>
+  <div class="brand">
+    <div class="brandleft">
+      <div class="logo" aria-label="Logo Finanzas 2027">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="24" r="20" fill="none" stroke="#f7c85c" stroke-width="2.6"/>
+          <rect x="11" y="26" width="6" height="10" rx="1.5" fill="#2563eb"/>
+          <rect x="19" y="20" width="6" height="16" rx="1.5" fill="#4caf50"/>
+          <rect x="27" y="13" width="7" height="23" rx="1.5" fill="#f7c85c"/>
+          <path d="M10 30 L20 22 L27 25 L38 12" fill="none" stroke="#f7c85c" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div><h1>Finanzas <span style="color:#f7c85c">2027</span></h1><div class="sub">Tu plan · Tu control · Tu futuro</div></div>
+    </div>
+    <div><button class="ico" id="bell">🔔</button> <button class="ico" id="gear">⚙️</button></div>
+  </div>
+</header>
+<div class="months" id="months"></div>
+<main class="main" id="main"></main>
 </div>
+<nav class="bottom">
+<button class="nav active" data-n="resumen"><span>⌂</span>Resumen</button>
+<button class="nav" data-n="fondos"><span>◉</span>Fondos</button>
+<button class="nav" data-n="presupuesto"><span>▥</span>Presupuesto</button>
+<button class="nav" data-n="viajes"><span>✈</span>Viajes</button>
+<button class="nav" data-n="mas"><span>☰</span>Más</button>
+</nav>
+<div class="toast" id="toast"></div>
+<div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
 
 <script>
-const months=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
-const normal=[
-["Vida cotidiana",1400],["Apartamento",400],["Emergencia",400],["Colombia",400],
-["Viajes",350],["Liquidez inmediata",100],["Inversión",100],["Disfrutar",100],["Billetera",50]
-];
-const data={
-"Enero":[["Vida cotidiana",1400],["Colombia",400],["Ski",300],["Napoleón",280],["Aseo anual",260],["TV",200],["Tenis",150],["Vignette",120],["Clase Ski",100],["Cumpleaños mamá",90]],
-"Febrero":normal,"Marzo":[...normal.slice(0,5),["Liquidez inmediata",100],["Inversión",100],["Disfrutar",100],["Billetera",50],["Pickerl / automóvil",750]],
-"Abril":normal,"Mayo":normal,"Junio":normal,
-"Julio":[["Vida cotidiana",1400],["Tiquetes Colombia",1200],["Colombia — fondo diciembre",1600],["Apartamento",700],["Emergencia",400],["Colombia mensual",400],["Viajes",350],["Liquidez inmediata",100],["Inversión",100],["Disfrutar",100],["Billetera",50]],
-"Agosto":normal,"Septiembre":normal,"Octubre":normal,"Noviembre":normal,
-"Diciembre":[["Vida cotidiana",1400],["Colombia — gastos diciembre",2800],["Apartamento",700],["Emergencia",400],["Colombia mensual",400],["Viajes",350],["Liquidez inmediata",100],["Inversión",100],["Disfrutar",100],["Billetera",50]]
+const M=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+const FM=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
+const D={
+ income:[3324,3300,3350,3300,3400,3300,3400,3300,3350,3300,3400,3500],
+ budget:Array(12).fill(3300),
+ funds:[
+  ['Apartamento','🏠',7000,[1050,600,600,600,600,600,600,600,600,600,600,550]],
+  ['Emergencia','🛡️',4400,[550,350,350,350,350,350,350,350,350,350,350,350]],
+  ['Liquidez inmediata','💧',null,[1100,0,0,0,0,0,0,0,0,0,0,0]],
+  ['Billetera','👛',550,[0,50,50,50,50,50,50,50,50,50,50,100]],
+  ['Inversión','📈',1000,[0,0,100,100,100,100,100,100,100,100,100,100]],
+  ['Viaje siguiente','✈️',3150,[400,350,300,250,250,250,250,250,250,250,200,100]]
+ ],
+ expenses:[
+  ['Aporte apartamento',1050,'#2563eb'],['Emergencia',550,'#16a34a'],['Viaje siguiente (Egipto)',400,'#f59e0b'],
+  ['Napoleón',280,'#ef4444'],['Aseo anual',260,'#7c3aed'],['TV',200,'#0891b2'],['Tenis',150,'#eab308'],
+  ['Vignette',120,'#db2777'],['Clase Ski',100,'#84cc16'],['Cumpleaños mamá',90,'#fb7185'],['Otros',100,'#64748b']
+ ],
+ checks:['Ingreso recibido','Envío Colombia','Napoleón – 280 €','Tenis','Clase Ski','Aporte apartamento','Fondo de emergencia','Liquidez inmediata'],
+ rem:[['ENE 22','Cumpleaños de mamá'],['MAR 15','Flexipremia → automóvil; sobrante → emergencia'],['MAY 15','Comprar tiquetes de Egipto'],['JUL 10','Comprar tiquetes Colombia'],['AGO 15','SOAT + Tecnomecánica Napoleón']]
 };
-const income={Enero:3300,Febrero:3300,Marzo:4050,Abril:3300,Mayo:3300,Junio:3300,Julio:6400,Agosto:3300,Septiembre:3300,Octubre:3300,Noviembre:3300,Diciembre:6400};
-let active=localStorage.getItem("activeMonth")||"Enero";
-let real=JSON.parse(localStorage.getItem("realIncome2027")||"{}");
-const colors=["#2563eb","#16a34a","#f59e0b","#dc2626","#7c3aed","#0891b2","#ea580c","#db2777","#65a30d","#4f46e5","#475569","#14b8a6"];
 
-function euro(x){return new Intl.NumberFormat("es-ES",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(x)}
-function pct(x,total){return total?x/total*100:0}
-function renderNav(){document.getElementById("nav").innerHTML=months.map(m=>`<button class="${m==active?'active':''}" onclick="setMonth('${m}')">${m.slice(0,3)}</button>`).join("")}
-function setMonth(m){active=m;localStorage.setItem("activeMonth",m);render()}
+let S=JSON.parse(localStorage.getItem('finanzas2027_v3')||'null')||{
+ m:0,n:'resumen', real:[3324,3300,3350,3300,3400,3300,3400,3300,3350,3300,3400,3500],
+ checks:{}, expByMonth:{}, fundExtra:{}, reminders:{}, alertas:true
+};
+const save=()=>localStorage.setItem('finanzas2027_v3',JSON.stringify(S));
+const money=n=>new Intl.NumberFormat('es-ES',{maximumFractionDigits:0}).format(Math.round(n))+' €';
+const toast=t=>{const x=document.getElementById('toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),1700)};
+const exp=()=>S.expByMonth[S.m]||D.expenses.map(x=>x[1]);
+
+function months(){
+ document.getElementById('months').innerHTML=M.map((x,i)=>`<button class="month ${i===S.m?'active':''}" data-m="${i}">${x}</button>`).join('');
+ document.querySelectorAll('.month').forEach(b=>b.onclick=()=>{S.m=+b.dataset.m;save();render();window.scrollTo({top:0,behavior:'smooth'})});
+}
+
+function fundProgress(f){
+ const cur=f[3].slice(0,S.m+1).reduce((a,b)=>a+b,0)+(S.fundExtra[f[0]]||0);
+ const p=f[2]?Math.min(100,cur/f[2]*100):100;
+ return {cur,p};
+}
+function funds(){
+ return `<section class="section"><div class="head"><h2>🎯 Progreso de fondos 2027</h2><button class="pill" onclick="fundModal()">Ajustar</button></div>
+ ${D.funds.map(f=>{const q=fundProgress(f);return `<div class="fund">
+ <div class="fundtop"><b class="fundname">${f[1]} ${f[0]}</b><span class="fundnum">${money(q.cur)} / ${f[2]?money(f[2]):'sin tope'}</span></div>
+ <div class="bar"><div class="fill" style="width:${q.p}%"></div></div>
+ <div class="fundbottom"><span>Acumulado hasta ${FM[S.m]}</span><b>${f[2]?q.p.toFixed(1)+' %':'sin límite'}</b></div>
+ </div>`}).join('')}</section>`;
+}
+
+function chart(){
+ const a=exp().map((v,i)=>({n:D.expenses[i][0],v,c:D.expenses[i][2],i})).filter(x=>x.v>0);
+ const tot=a.reduce((q,x)=>q+x.v,0)||1; let ang=0;
+ const arcs=a.map(x=>{const sw=x.v/tot*360,s=ang;ang+=sw;return {...x,s,e:ang,p:x.v/tot*100}});
+ return `<section class="section"><div class="head"><h2>🍲 Distribución · ${FM[S.m]}</h2><button class="pill" onclick="budgetModal()">Editar</button></div>
+ <div class="chart"><div><div class="donut"><svg viewBox="0 0 200 200"><circle class="track" cx="100" cy="100" r="70"></circle>
+ ${arcs.map(x=>`<circle class="seg" data-i="${x.i}" cx="100" cy="100" r="70" stroke="${x.c}" pathLength="439.82" stroke-dasharray="${x.v/tot*439.82} 439.82" stroke-dashoffset="${-x.s/360*439.82}"></circle>`).join('')}
+ </svg><div class="center"><b>${money(tot)}</b><span>Total presupuesto</span></div></div>
+ <div class="detail" id="detail">Toca una categoría para ver <span>valor y porcentaje</span>.</div></div>
+ <div class="legend">${arcs.map(x=>`<div class="leg" data-i="${x.i}"><i class="dot" style="background:${x.c}"></i><b>${x.n}</b><span>${money(x.v)}</span><span>${x.p.toFixed(1)}%</span></div>`).join('')}</div></div></section>`;
+}
+
+function checks(){
+ const a=D.checks.map((n,i)=>({n,i,s:S.checks[S.m+'-'+i]||'wait'}));
+ const ok=a.filter(x=>x.s==='ok').length,no=a.filter(x=>x.s==='no').length;
+ return `<section class="section"><div class="head"><h2>☑️ Control de cierre · ${FM[S.m]}</h2>
+ <div class="tools"><button class="secondary" onclick="allCheck('ok')">Todo ✓</button><button class="secondary" onclick="allCheck('no')">Todo ✕</button></div></div>
+ <div class="chips"><span class="chip green">✓ ${ok} Cumplidos</span><span class="chip red">✕ ${no} No cumplidos</span><span class="chip gray">— ${a.length-ok-no} Pendientes</span></div>
+ ${a.map(x=>`<div class="check"><b class="checkname">${x.n}</b><button class="status ok ${x.s==='ok'?'active':''}" onclick="setC(${x.i},'ok')">✓</button><button class="status no ${x.s==='no'?'active':''}" onclick="setC(${x.i},'no')">✕</button><button class="status wait ${x.s==='wait'?'active':''}" onclick="setC(${x.i},'wait')">—</button></div>`).join('')}
+ <p style="color:var(--mut);font-size:13px">Tú eliges manualmente el estado. El control se guarda en este dispositivo.</p></section>`;
+}
+
+function reminders(){
+ return `<section class="section"><div class="head"><h2>🗓️ Recordatorios clave</h2><button class="pill" onclick="remModal()">Gestionar</button></div>
+ ${D.rem.map((r,i)=>{const done=!!S.reminders[i];return `<div class="rem"><div><div class="date">${r[0]}</div><b>${r[1]}</b></div>
+ <button class="tag ${done?'done':''}" onclick="toggleRem(${i})">${done?'✓ Completado':'Pendiente'}</button></div>`}).join('')}</section>`;
+}
+
+function annual(){
+ const totalIncome=S.real.reduce((a,b)=>a+(+b||0),0), totalBudget=D.budget.reduce((a,b)=>a+b,0);
+ const completed=Object.values(S.checks).filter(x=>x==='ok').length, possible=12*D.checks.length;
+ const avg=Math.round(completed/possible*100);
+ return `<section class="section"><div class="head"><h2>📊 Resumen anual 2027</h2></div>
+ <div class="annual">
+ <div class="mini"><span class="label">Ingresos reales</span><br><b>${money(totalIncome)}</b></div>
+ <div class="mini"><span class="label">Presupuesto anual</span><br><b>${money(totalBudget)}</b></div>
+ <div class="mini"><span class="label">Control completado</span><br><b>${avg}%</b><div class="progress"><i style="width:${avg}%"></i></div></div>
+ </div></section>`;
+}
+
 function render(){
-renderNav();
-let planned=data[active], planTotal=planned.reduce((a,b)=>a+b[1],0), base=income[active];
-let ri=real[active]??base, diff=ri-planTotal;
-let status=diff>0?`<div class="status surplus">🟢 Excedente real: ${euro(diff)}</div>`:diff<0?`<div class="status short">🔴 Faltante frente al plan: ${euro(Math.abs(diff))}</div>`:`<div class="status ok">🟢 Presupuesto equilibrado: 0 € de excedente</div>`;
-let angles=[],cur=0; planned.forEach((x,i)=>{let a=pct(x[1],ri)*3.6;angles.push(`${colors[i%colors.length]} ${cur}deg ${cur+a}deg`);cur+=a});
-if(diff>0){angles.push(`#16a34a ${cur}deg 360deg`); }
-let gradient=angles.length?`conic-gradient(${angles.join(",")})`:"";
-let legend=planned.map((x,i)=>`<div class="leg"><span class="dot" style="background:${colors[i%colors.length]}"></span><span>${x[0]} — ${euro(x[1])} <b>${pct(x[1],ri).toFixed(1)}%</b></span></div>`).join("");
-let rows=planned.map((x,i)=>`<div class="row"><span><b>${x[0]}</b></span><span>${euro(x[1])} <span class="pct">${pct(x[1],ri).toFixed(1)}%</span></span></div>`).join("");
-if(diff>0) rows+=`<div class="row"><span><b>🟢 EXCEDENTE</b></span><span><b>${euro(diff)}</b> <span class="pct">${pct(diff,ri).toFixed(1)}%</span></span></div>`;
-document.getElementById("app").innerHTML=`
-<section class="card">
-<h2>${active} 2027</h2>
-<div class="grid">
-<div class="metric"><small>Ingreso planificado</small><strong>${euro(base)}</strong></div>
-<div class="metric"><small>Presupuesto</small><strong>${euro(planTotal)}</strong></div>
-<div class="metric"><small>Ingreso real</small><strong>${euro(ri)}</strong></div>
-<div class="metric"><small>Excedente</small><strong>${diff>0?euro(diff):"0 €"}</strong></div>
-</div>
-<label><b>💳 Dinero realmente recibido en tu cuenta</b>
-<input id="realInput" type="number" min="0" step="1" value="${ri}" onchange="saveReal(this.value)" oninput="saveReal(this.value)">
-</label>${status}
-<p class="note">Si recibes más que el presupuesto, la diferencia aparece automáticamente como <b>EXCEDENTE</b>. Si recibes menos, el sistema lo marca como faltante.</p>
-</section>
-<section class="card">
-<h2>🥧 Distribución interactiva</h2>
-<div class="chartbox"><div class="pie" style="background:${gradient}"><div class="hole">${euro(ri)}<br><small>ingreso real</small></div></div></div><div id="tapInfo" class="status surplus" style="display:none;margin-top:12px"></div>
-<div class="legend">${legend}${diff>0?`<div class="leg"><span class="dot" style="background:#16a34a"></span><span>🟢 Excedente — ${euro(diff)} <b>${pct(diff,ri).toFixed(1)}%</b></span></div>`:""}</div>
-</section>
-<section class="card"><h2>📋 Detalle</h2>${rows}</section>
-`;
-}
-function saveReal(v){real[active]=Number(v)||0;localStorage.setItem("realIncome2027",JSON.stringify(real));render()}
-function bindPie(){
- const pie=document.querySelector(".pie"), info=document.getElementById("tapInfo"); if(!pie||!info)return;
- pie.onclick=(e)=>{
-  const r=pie.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height/2;
-  let deg=Math.atan2(e.clientY-cy,e.clientX-cx)*180/Math.PI+90; if(deg<0)deg+=360;
-  const items=data[active], total=Number(document.getElementById("realInput").value)||income[active];
-  let acc=0, hit=null;
-  items.forEach((x,i)=>{let end=acc+pct(x[1],total)*3.6;if(hit===null&&deg>=acc&&deg<end)hit=[x,i];acc=end});
-  const diff=total-items.reduce((a,b)=>a+b[1],0);
-  if(hit===null&&diff>0&&deg>=acc)hit=[["EXCEDENTE",diff],items.length];
-  if(hit){info.style.display="block";info.innerHTML="<b>"+hit[0][0]+"</b><br>"+euro(hit[0][1])+" · "+pct(hit[0][1],total).toFixed(1)+"% del ingreso real";}
- }
+ months();
+ document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.n===S.n));
+ const m=S.m, inc=+S.real[m]||0,bud=D.budget[m],ex=inc-bud;
+ const done=D.checks.filter((_,i)=>S.checks[m+'-'+i]==='ok').length;
+ let content='';
+ if(S.n==='resumen') content=`<div class="grid">
+ <div class="card"><div class="label">Ingreso real</div><div class="value">${money(inc)}</div><div class="small">Puedes editarlo</div></div>
+ <div class="card"><div class="label">Presupuesto</div><div class="value">${money(bud)}</div><div class="small">planificado</div></div>
+ <div class="card"><div class="label">${ex>=0?'Excedente':'Déficit'}</div><div class="value">${money(Math.abs(ex))}</div><div class="small">${ex>=0?'este mes':'a cubrir'}</div></div>
+ <div class="card"><div class="label">Cumplimiento</div><div class="value">${done}/${D.checks.length}</div><div class="small">${Math.round(done/D.checks.length*100)} %</div></div>
+ </div>
+ <section class="section"><div class="head"><h2>💶 Ingreso real · ${FM[m]}</h2><button class="primary" onclick="incomeModal()">Editar</button></div>
+ <div class="notice">Registra lo que realmente entró en tu cuenta. El excedente o déficit se calcula automáticamente frente al presupuesto.</div></section>
+ ${funds()}${chart()}${checks()}${reminders()}${annual()}`;
+ else if(S.n==='fondos') content=funds()+annual();
+ else if(S.n==='presupuesto') content=chart()+checks();
+ else if(S.n==='viajes') content=`<section class="section"><h2>✈️ Viajes</h2><p style="color:var(--mut)">Controla aquí el fondo de viaje y sus avances mensuales.</p></section>${funds()}${reminders()}`;
+ else content=`<section class="section"><div class="head"><h2>⚙️ Más</h2></div><p style="color:var(--mut)">Tus datos se guardan localmente en el iPhone.</p>
+ <div class="tools"><button class="primary" onclick="exportData()">Exportar datos</button><button class="secondary" onclick="importModal()">Importar datos</button><button class="secondary" onclick="resetData()">Restablecer demo</button></div></section>
+ ${annual()}${reminders()}`;
+ document.getElementById('main').innerHTML=content; bindChart();
 }
 
-function renderGoals(){
-const goals=[["🏠 Apartamento",7000,7000],["🛡️ Emergencia",4400,4400],["💧 Liquidez inmediata",1100,null],["👛 Billetera",550,550],["📈 Inversión",1000,1000],["✈️ Viaje siguiente",700,700]];
-document.getElementById("goals").innerHTML=goals.map(g=>{let target=g[1], shown=g[2]??g[1], p=Math.min(100,shown/target*100);return `<div class="goal"><div class="goaltop"><b>${g[0]}</b><span>${euro(shown)} / ${g[2]===null?"sin tope":euro(target)}</span></div><div class="progress"><div class="bar" style="width:${p}%"></div></div></div>`}).join("");
+function bindChart(){
+ document.querySelectorAll('.seg,.leg').forEach(x=>x.onclick=()=>{
+   const i=+x.dataset.i,total=exp().reduce((a,b)=>a+b,0)||1,p=exp()[i]/total*100;
+   document.getElementById('detail').innerHTML=`${D.expenses[i][0]}: <span>${money(exp()[i])}</span> · <span>${p.toFixed(1)}%</span>`;
+   document.querySelectorAll('.leg').forEach(l=>l.classList.toggle('active',+l.dataset.i===i));
+   document.querySelectorAll('.seg').forEach(s=>s.classList.toggle('active',+s.dataset.i===i));
+ });
 }
-function renderAll(){render();renderGoals();bindPie()}
-renderAll();
+
+function setC(i,s){S.checks[S.m+'-'+i]=s;save();render();toast(s==='ok'?'Cumplido ✓':s==='no'?'No cumplido ✕':'Pendiente —')}
+function allCheck(s){D.checks.forEach((_,i)=>S.checks[S.m+'-'+i]=s);save();render();toast(s==='ok'?'Mes marcado como cumplido ✓':'Mes marcado como no cumplido ✕')}
+function toggleRem(i){S.reminders[i]=!S.reminders[i];save();render();toast(S.reminders[i]?'Recordatorio completado ✓':'Recordatorio pendiente')}
+function modal(html){document.getElementById('sheet').innerHTML=html;document.getElementById('modal').classList.add('show')}
+function close(){document.getElementById('modal').classList.remove('show')}
+
+function incomeModal(){modal(`<button class="closex" onclick="close()">×</button><h3>Ingreso real · ${FM[S.m]}</h3><div class="field"><label>Dinero realmente recibido (€)</label><input id="incomeInput" type="number" min="0" step="1" value="${S.real[S.m]||0}"></div><div class="tools"><button class="primary" id="saveI">Guardar</button><button class="secondary" onclick="close()">Cancelar</button></div>`);
+document.getElementById('saveI').onclick=()=>{S.real[S.m]=Math.max(0,+document.getElementById('incomeInput').value||0);save();close();render();toast('Ingreso actualizado')}}
+function budgetModal(){const a=exp();modal(`<button class="closex" onclick="close()">×</button><h3>Presupuesto · ${FM[S.m]}</h3>${D.expenses.map((x,i)=>`<div class="field"><label>${x[0]}</label><input type="number" min="0" step="10" value="${a[i]}" data-e="${i}"></div>`).join('')}<div class="tools"><button class="primary" id="saveB">Guardar</button><button class="secondary" onclick="close()">Cancelar</button></div>`);
+document.getElementById('saveB').onclick=()=>{S.expByMonth[S.m]=D.expenses.map((_,i)=>0);document.querySelectorAll('[data-e]').forEach(x=>S.expByMonth[S.m][+x.dataset.e]=Math.max(0,+x.value||0));save();close();render();toast('Presupuesto actualizado')}}
+function fundModal(){modal(`<button class="closex" onclick="close()">×</button><h3>Ajustes de fondos</h3><p style="color:var(--mut)">Añade aportes extraordinarios que no estén en la planificación mensual.</p>${D.funds.map(f=>`<div class="field"><label>${f[0]}</label><input type="number" min="0" step="10" value="${S.fundExtra[f[0]]||0}" data-f="${f[0]}"></div>`).join('')}<div class="tools"><button class="primary" id="saveF">Guardar</button><button class="secondary" onclick="close()">Cancelar</button></div>`);
+document.getElementById('saveF').onclick=()=>{document.querySelectorAll('[data-f]').forEach(x=>S.fundExtra[x.dataset.f]=Math.max(0,+x.value||0));save();close();render();toast('Fondos actualizados')}}
+function remModal(){modal(`<button class="closex" onclick="close()">×</button><h3>Recordatorios</h3><p style="color:var(--mut)">Puedes marcar cada recordatorio como completado cuando lo hayas realizado.</p>${D.rem.map((r,i)=>`<div class="rem"><div><div class="date">${r[0]}</div><b>${r[1]}</b></div><button class="tag ${S.reminders[i]?'done':''}" onclick="toggleRem(${i});close()">${S.reminders[i]?'✓ Completado':'Pendiente'}</button></div>`).join('')}`)}
+function exportData(){const a=document.createElement('a'),b=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});a.href=URL.createObjectURL(b);a.download='finanzas-2027-datos.json';a.click();URL.revokeObjectURL(a.href);toast('Copia exportada')}
+function importModal(){modal(`<button class="closex" onclick="close()">×</button><h3>Importar datos</h3><p style="color:var(--mut)">Selecciona un archivo JSON exportado previamente desde esta app.</p><input id="fileIn" type="file" accept=".json,application/json"><div class="tools" style="margin-top:12px"><button class="secondary" onclick="close()">Cancelar</button></div>`);
+document.getElementById('fileIn').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{S=JSON.parse(r.result);save();close();render();toast('Datos importados ✓')}catch{toast('Archivo no válido')}};r.readAsText(f)}}
+function resetData(){if(confirm('¿Restablecer la demo y borrar tus cambios locales?')){localStorage.removeItem('finanzas2027_v3');location.reload()}}
+document.querySelectorAll('.nav').forEach(x=>x.onclick=()=>{S.n=x.dataset.n;save();render();window.scrollTo({top:0,behavior:'smooth'})});
+document.getElementById('bell').onclick=()=>{S.n='resumen';save();render();setTimeout(()=>document.querySelector('.section:last-child')?.scrollIntoView({behavior:'smooth'}),80)};
+document.getElementById('gear').onclick=()=>{S.n='mas';save();render();window.scrollTo({top:0,behavior:'smooth'})};
+document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')close()};
+render();
+if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
-</body></html>
+</body>
+</html>
