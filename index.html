@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111827">
+<title>Plan Financiero 2027</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#64748b;--line:#e5e7eb;--accent:#2563eb;--green:#16a34a;--orange:#ea580c;--red:#dc2626}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:720px;margin:auto;padding:16px 14px 40px}.hero{background:#111827;color:white;border-radius:22px;padding:20px;margin-bottom:14px}
+h1{font-size:25px;margin:0 0 5px}.sub{color:#cbd5e1;font-size:13px}.nav{display:flex;gap:7px;overflow:auto;padding:4px 0 12px;position:sticky;top:0;background:var(--bg);z-index:3}
+.nav button{border:1px solid var(--line);background:white;border-radius:12px;padding:9px 12px;white-space:nowrap;font-weight:700}.nav button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin:10px 0;box-shadow:0 2px 8px #00000008}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{background:#f8fafc;border-radius:14px;padding:12px}.metric small{color:var(--muted);display:block}.metric strong{font-size:20px}
+input{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:11px;font-size:17px;margin-top:7px}
+.status{padding:12px;border-radius:13px;margin-top:10px;font-weight:800}.ok{background:#ecfdf5;color:#166534}.surplus{background:#eff6ff;color:#1d4ed8}.short{background:#fef2f2;color:#b91c1c}
+.chartbox{display:flex;justify-content:center}.pie{width:min(330px,80vw);height:min(330px,80vw);border-radius:50%;position:relative;box-shadow:inset 0 0 0 1px #fff,0 5px 18px #00000012}
+.hole{position:absolute;inset:27%;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;font-size:13px;padding:15px}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:14px}.leg{font-size:12px;display:flex;gap:6px;align-items:center}.dot{width:11px;height:11px;border-radius:3px;flex:none}
+.row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}.row:last-child{border-bottom:0}.pct{color:var(--muted)}
+h2{font-size:18px;margin:4px 0 10px}h3{font-size:15px;margin:14px 0 6px}.note{font-size:13px;color:var(--muted);line-height:1.45}
+.progress{height:10px;background:#e5e7eb;border-radius:99px;overflow:hidden}.bar{height:100%;background:var(--accent)}
+.goal{margin:13px 0}.goaltop{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px}
+button.action{border:0;background:var(--accent);color:white;border-radius:11px;padding:10px 12px;font-weight:700;margin-top:8px}
+.smallbtn{border:1px solid var(--line);background:white;border-radius:10px;padding:8px 10px;margin-right:5px}
+footer{font-size:11px;color:var(--muted);text-align:center;padding:15px}
+@media(min-width:650px){.grid{grid-template-columns:repeat(4,1fr)}}
+</style>
+<link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#111827"><script>if("serviceWorker" in navigator){addEventListener("load",()=>navigator.serviceWorker.register("sw.js"))}</script></head>
+<body>
+<div class="wrap">
+<section class="hero">
+<h1>💰 Plan Financiero 2027</h1>
+<div class="sub">Control mensual · presupuesto · ingreso real · excedentes · metas</div>
+</section>
+
+<div class="nav" id="nav"></div>
+<div id="app"></div>
+
+<section class="card">
+<h2>🎯 Metas al cierre de 2027</h2>
+<div id="goals"></div>
+</section>
+<section class="card">
+<h2>🗓️ Recordatorios clave</h2>
+<div class="row"><b>ENERO</b><span>280 € → Napoleón · gastos anuales · Ski · Tenis</span></div>
+<div class="row"><b>MARZO</b><span>Flexipremia → automóvil; sobrante → emergencia</span></div>
+<div class="row"><b>MEDIADOS DE MAYO</b><span>Comprar tiquetes de Egipto</span></div>
+<div class="row"><b>JULIO</b><span>Doble sueldo · tiquetes Colombia · fondo Colombia</span></div>
+<div class="row"><b>AGOSTO</b><span>SOAT + tecnomecánica de Napoleón</span></div>
+<div class="row"><b>OCTUBRE</b><span>🇪🇬 Egipto · presupuesto total 3.150 €</span></div>
+<div class="row"><b>DICIEMBRE</b><span>🇨🇴 Colombia · presupuesto total 5.600 €</span></div>
+</section>
+<footer>Los datos se guardan automáticamente en este dispositivo. El ingreso real es editable mes a mes.</footer>
+</div>
+
+<script>
+const months=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+const normal=[
+["Vida cotidiana",1400],["Apartamento",400],["Emergencia",400],["Colombia",400],
+["Viajes",350],["Liquidez inmediata",100],["Inversión",100],["Disfrutar",100],["Billetera",50]
+];
+const data={
+"Enero":[["Vida cotidiana",1400],["Colombia",400],["Ski",300],["Napoleón",280],["Aseo anual",260],["TV",200],["Tenis",150],["Vignette",120],["Clase Ski",100],["Cumpleaños mamá",90]],
+"Febrero":normal,"Marzo":[...normal.slice(0,5),["Liquidez inmediata",100],["Inversión",100],["Disfrutar",100],["Billetera",50],["Pickerl / automóvil",750]],
+"Abril":normal,"Mayo":normal,"Junio":normal,
+"Julio":[["Vida cotidiana",1400],["Tiquetes Colombia",1200],["Colombia — fondo diciembre",1600],["Apartamento",700],["Emergencia",400],["Colombia mensual",400],["Viajes",350],["Liquidez inmediata",100],["Inversión",100],["Disfrutar",100],["Billetera",50]],
+"Agosto":normal,"Septiembre":normal,"Octubre":normal,"Noviembre":normal,
+"Diciembre":[["Vida cotidiana",1400],["Colombia — gastos diciembre",2800],["Apartamento",700],["Emergencia",400],["Colombia mensual",400],["Viajes",350],["Liquidez inmediata",100],["Inversión",100],["Disfrutar",100],["Billetera",50]]
+};
+const income={Enero:3300,Febrero:3300,Marzo:4050,Abril:3300,Mayo:3300,Junio:3300,Julio:6400,Agosto:3300,Septiembre:3300,Octubre:3300,Noviembre:3300,Diciembre:6400};
+let active=localStorage.getItem("activeMonth")||"Enero";
+let real=JSON.parse(localStorage.getItem("realIncome2027")||"{}");
+const colors=["#2563eb","#16a34a","#f59e0b","#dc2626","#7c3aed","#0891b2","#ea580c","#db2777","#65a30d","#4f46e5","#475569","#14b8a6"];
+
+function euro(x){return new Intl.NumberFormat("es-ES",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(x)}
+function pct(x,total){return total?x/total*100:0}
+function renderNav(){document.getElementById("nav").innerHTML=months.map(m=>`<button class="${m==active?'active':''}" onclick="setMonth('${m}')">${m.slice(0,3)}</button>`).join("")}
+function setMonth(m){active=m;localStorage.setItem("activeMonth",m);render()}
+function render(){
+renderNav();
+let planned=data[active], planTotal=planned.reduce((a,b)=>a+b[1],0), base=income[active];
+let ri=real[active]??base, diff=ri-planTotal;
+let status=diff>0?`<div class="status surplus">🟢 Excedente real: ${euro(diff)}</div>`:diff<0?`<div class="status short">🔴 Faltante frente al plan: ${euro(Math.abs(diff))}</div>`:`<div class="status ok">🟢 Presupuesto equilibrado: 0 € de excedente</div>`;
+let angles=[],cur=0; planned.forEach((x,i)=>{let a=pct(x[1],ri)*3.6;angles.push(`${colors[i%colors.length]} ${cur}deg ${cur+a}deg`);cur+=a});
+if(diff>0){angles.push(`#16a34a ${cur}deg 360deg`); }
+let gradient=angles.length?`conic-gradient(${angles.join(",")})`:"";
+let legend=planned.map((x,i)=>`<div class="leg"><span class="dot" style="background:${colors[i%colors.length]}"></span><span>${x[0]} — ${euro(x[1])} <b>${pct(x[1],ri).toFixed(1)}%</b></span></div>`).join("");
+let rows=planned.map((x,i)=>`<div class="row"><span><b>${x[0]}</b></span><span>${euro(x[1])} <span class="pct">${pct(x[1],ri).toFixed(1)}%</span></span></div>`).join("");
+if(diff>0) rows+=`<div class="row"><span><b>🟢 EXCEDENTE</b></span><span><b>${euro(diff)}</b> <span class="pct">${pct(diff,ri).toFixed(1)}%</span></span></div>`;
+document.getElementById("app").innerHTML=`
+<section class="card">
+<h2>${active} 2027</h2>
+<div class="grid">
+<div class="metric"><small>Ingreso planificado</small><strong>${euro(base)}</strong></div>
+<div class="metric"><small>Presupuesto</small><strong>${euro(planTotal)}</strong></div>
+<div class="metric"><small>Ingreso real</small><strong>${euro(ri)}</strong></div>
+<div class="metric"><small>Excedente</small><strong>${diff>0?euro(diff):"0 €"}</strong></div>
+</div>
+<label><b>💳 Dinero realmente recibido en tu cuenta</b>
+<input id="realInput" type="number" min="0" step="1" value="${ri}" onchange="saveReal(this.value)" oninput="saveReal(this.value)">
+</label>${status}
+<p class="note">Si recibes más que el presupuesto, la diferencia aparece automáticamente como <b>EXCEDENTE</b>. Si recibes menos, el sistema lo marca como faltante.</p>
+</section>
+<section class="card">
+<h2>🥧 Distribución interactiva</h2>
+<div class="chartbox"><div class="pie" style="background:${gradient}"><div class="hole">${euro(ri)}<br><small>ingreso real</small></div></div></div><div id="tapInfo" class="status surplus" style="display:none;margin-top:12px"></div>
+<div class="legend">${legend}${diff>0?`<div class="leg"><span class="dot" style="background:#16a34a"></span><span>🟢 Excedente — ${euro(diff)} <b>${pct(diff,ri).toFixed(1)}%</b></span></div>`:""}</div>
+</section>
+<section class="card"><h2>📋 Detalle</h2>${rows}</section>
+`;
+}
+function saveReal(v){real[active]=Number(v)||0;localStorage.setItem("realIncome2027",JSON.stringify(real));render()}
+function bindPie(){
+ const pie=document.querySelector(".pie"), info=document.getElementById("tapInfo"); if(!pie||!info)return;
+ pie.onclick=(e)=>{
+  const r=pie.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height/2;
+  let deg=Math.atan2(e.clientY-cy,e.clientX-cx)*180/Math.PI+90; if(deg<0)deg+=360;
+  const items=data[active], total=Number(document.getElementById("realInput").value)||income[active];
+  let acc=0, hit=null;
+  items.forEach((x,i)=>{let end=acc+pct(x[1],total)*3.6;if(hit===null&&deg>=acc&&deg<end)hit=[x,i];acc=end});
+  const diff=total-items.reduce((a,b)=>a+b[1],0);
+  if(hit===null&&diff>0&&deg>=acc)hit=[["EXCEDENTE",diff],items.length];
+  if(hit){info.style.display="block";info.innerHTML="<b>"+hit[0][0]+"</b><br>"+euro(hit[0][1])+" · "+pct(hit[0][1],total).toFixed(1)+"% del ingreso real";}
+ }
+}
+
+function renderGoals(){
+const goals=[["🏠 Apartamento",7000,7000],["🛡️ Emergencia",4400,4400],["💧 Liquidez inmediata",1100,null],["👛 Billetera",550,550],["📈 Inversión",1000,1000],["✈️ Viaje siguiente",700,700]];
+document.getElementById("goals").innerHTML=goals.map(g=>{let target=g[1], shown=g[2]??g[1], p=Math.min(100,shown/target*100);return `<div class="goal"><div class="goaltop"><b>${g[0]}</b><span>${euro(shown)} / ${g[2]===null?"sin tope":euro(target)}</span></div><div class="progress"><div class="bar" style="width:${p}%"></div></div></div>`}).join("");
+}
+function renderAll(){render();renderGoals();bindPie()}
+renderAll();
+</script>
+</body></html>
